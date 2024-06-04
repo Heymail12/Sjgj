@@ -1,0 +1,261 @@
+name: |-
+  Egerndeez
+desc: |-
+  Egerndeez
+icon: |-
+  https://github.com/Toperlock/Quantumult/raw/main/icon/Doraemon/Doraemon-1051.png
+
+http:
+
+  mitm:
+    - "api.revenuecat.com"
+    - "buy.itunes.apple.com"
+    - "api.picsart.com"
+    - "api-account.kinemasters.com"
+    - "us-central1-alight-creative.cloudfunctions.net"
+    - "api.adapty.io"
+    - "carrotweather.herokuapp.com"
+    - "order.creativeappnow.com"
+    - "api.mwm-users.com"
+    - "us-central1-muslim-pro-app.cloudfunctions.net"
+    - "prod.studysmarter.de"
+    - "api.qonversion.io"
+    - "subscription.grammarly.com"
+    - "api.esound.app"
+    - "api.purchasely.io"
+    - "api.sandbox.love"
+    - "subscriptions.songshift.com"
+    - "api.adblockpro.app"
+    - "mobile-api.adguard.org"
+    - "url2script.com"
+
+  header-rewrite:
+    - >-
+      ^https?://api\.revenuecat\.com/.+/(receipts$|subscribers/?(.*?)*$) response-del X-RevenueCat-ETag
+    - >-
+      ^https?://api\.revenuecat\.com/.+/(receipts$|subscribers/?(.*?)*$) response-del x-revenuecat-etag
+
+  script:
+    - match: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$)
+      name: "AppRCTesters_11"
+      type: response
+      require-body: true
+      max-size: -1
+      binary-mode: false
+      timeout: 30
+
+    - match: https://api.adapty.io/api/v1/sdk/analytics/profiles
+      name: "AppAdTesters_12"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: https://order.creativeappnow.com/iap/receipt
+      name: "AppFMTesters_13"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: https:\/\/license\.pdfexpert\.com\/api\/2\.0\/(calendarslite|pdfexpert6|documents)\/subscription\/(refresh|check)
+      name: "AppReTesters_14"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt
+      name: "AppitTesters_15"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: us-central1-muslim-pro-app.cloudfunctions.net/GetUserPremiumInfo
+      name: "AppMuTesters_16"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: ^https?:\/\/subscription\.grammarly\.com\/api\/v1\/subscription$
+      name: "AppGrTesters_17"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: api.esound.app/account
+      name: "AppeSTesters_18"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: https://api.purchasely.io/paab/user_purchases
+      name: "AppPurTesters_19"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: prod.studysmarter.de/payments/info
+      name: "AppVaTesters_20"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: api.qonversion.io/v1/user/init
+      name: "AppQOTesters_21"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: https://api.mwm-users.com/me/features
+      name: "AppDJTesters_22"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: https://api-fra.vivacut.com/api/rest/commerce/integrate/vip/perform
+      name: "AppVCTesters_23"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: https://carrotweather.herokuapp.com/parse/functions/findSubscriptionsForUserId
+      name: "AppCaTesters_24"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: https://api-account.kinemasters.com/v2/user/subscribe
+      name: "AppKineTesters_25"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: https://api.picsart.com/gw-v2/shop/subscription/apple/purchases
+      name: "AppPicTesters_26"
+      type: request
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: https://us-central1-alight-creative.cloudfunctions.net/getAccountStatusAndLicenses
+      name: "AppAMTesters_27"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: api.sandbox.love/accounts/current
+      name: "AppSaTesters_28"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: subscriptions.songshift.com/validate
+      name: "AppSSesters_29"
+      type: response
+      require-body: true
+      max-size: -1
+      binary-mode: false
+
+    - match: api.adblockpro.app/verify
+      name: "AppADBTesters_30"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: ^https:\/\/mobile-api\.adguard\.org\/api\/.+\/ios_validate_receipt\/(.*?)
+      name: "AppADGTesters_31"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+    - match: ILoveDevTheDev.com
+      name: "AppDTesters_32"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: false
+
+script-providers:
+  "AppRCTesters_11":
+    url: https://apptesters.org/wp-content/uploads/AutoRC.js
+    interval: 86400
+  "AppAdTesters_12":
+    url: https://apptesters.org/wp-content/uploads/Adapty.js
+    interval: 86400
+  "AppFMTesters_13":
+    url: https://apptesters.org/wp-content/uploads/Facemoji.js
+    interval: 86400
+  "AppReTesters_14":
+    url: https://apptesters.org/wp-content/uploads/readdle.js
+    interval: 86400
+  "AppitTesters_15":
+    url: https://apptesters.org/wp-content/uploads/iTunes.js
+    interval: 86400
+  "AppMuTesters_16":
+    url: https://apptesters.org/wp-content/uploads/MuslimPro.js
+    interval: 86400
+  "AppGrTesters_17":
+    url: https://apptesters.org/wp-content/uploads/Grammarly.js
+    interval: 86400
+  "AppeSTesters_18":
+    url: https://apptesters.org/wp-content/uploads/eSound.js
+    interval: 86400
+  "AppPurTesters_19":
+    url: https://apptesters.org/wp-content/uploads/purchasely.js
+    interval: 86400
+  "AppVaTesters_20":
+    url: https://apptesters.org/wp-content/uploads/Vaia.js
+    interval: 86400
+  "AppQOTesters_21":
+    url: https://apptesters.org/wp-content/uploads/qonversion.js
+    interval: 86400
+  "AppDJTesters_22":
+    url: https://apptesters.org/wp-content/uploads/edjingMix.js
+    interval: 86400
+  "AppVCTesters_23":
+    url: https://apptesters.org/wp-content/uploads/VivaCut.js
+    interval: 86400
+  "AppCaTesters_24":
+    url: https://apptesters.org/wp-content/uploads/Carrot.js
+    interval: 86400
+  "AppKineTesters_25":
+    url: https://apptesters.org/wp-content/uploads/KineMaster.js
+    interval: 86400
+  "AppPicTesters_26":
+    url: https://apptesters.org/wp-content/uploads/PicsArt.js
+    interval: 86400
+  "AppAMTesters_27":
+    url: https://apptesters.org/wp-content/uploads/AlightMotion.js
+    interval: 86400
+  "AppSaTesters_28":
+    url: https://apptesters.org/wp-content/uploads/SandBox.js
+    interval: 86400
+  "AppSSesters_29":
+    url: https://apptesters.org/wp-content/uploads/SongShift.js
+    interval: 86400
+  "AppADBTesters_30":
+    url: https://apptesters.org/wp-content/uploads/AdblockPro.js
+    interval: 86400
+  "AppADGTesters_31":
+    url: https://apptesters.org/wp-content/uploads/AdGuardPro.js
+    interval: 86400
+  "AppDTesters_32":
+    url: https://URL2Script.com
+    interval: 86400
+
